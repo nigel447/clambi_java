@@ -30,11 +30,6 @@ public class KinesisLambdaHandlerS3 implements RequestHandler<KinesisEvent, Void
         logger.log(String.format("num kinesis events from getRecords %s", evts.size()));
 
         logger.log(String.format("first r   event.toString %s", event.toString()));
-//        try {
-//            Thread.sleep(30000);
-//        } catch (InterruptedException e) {
-//            logger.log(String.format("lambda thread sleep %s", e.getLocalizedMessage()));
-//        }
         String ret = handleS3StringUpload( event.toString(), logger);
         logger.log("handleS3StringUpload result " + ret);
 

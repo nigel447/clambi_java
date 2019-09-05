@@ -19,6 +19,8 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * running in lambda need to keep everything as local to this package as possible
+ *
+ * localstack code
  */
 public enum S3manager {
 

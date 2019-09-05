@@ -1,0 +1,29 @@
+
+task copyLambdaClientDistribution(type: Copy) {
+    println(" running task copyLambdaClientDistribution with source:= ${projectDir}/build/distributions")
+    println(" running task copyLambdaClientDistribution with target:= ${projectDir}/containers")
+    from "${projectDir}/build/distributions"
+    include "**/*.tar"
+    into "${projectDir}/containers"
+}
+
+task unpackLambdaClientDistribution(type: Copy) {
+    dependsOn copyLambdaClientDistribution
+
+    from tarTree("${projectDir}/containers/java-runtime-1.tar")
+    into "${projectDir}/containers"
+}
+
+task setUpLambdaClientDistribution(type: Copy) {
+    dependsOn unpackLambdaClientDistribution
+
+    from "${projectDir}/build/classes/java/main"
+    include "**/*.class"
+    into "${projectDir}/containers/java-runtime-1"
+
+}
+
+
+
+
+
